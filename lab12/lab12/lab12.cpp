@@ -1,10 +1,9 @@
-﻿#include "IlinkovskiArseniy_Caesar's_cipher.h"
-#include <iostream>
+﻿#include <iostream>
 #include <Windows.h>
 #include <cstdio>
 #include <cmath>
 
-
+using namespace std;
 const int SCR_WIDTH = 80;
 const int SCR_HEIGHT = 25;
 const int CELL_WIDTH = 8;

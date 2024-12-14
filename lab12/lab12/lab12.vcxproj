@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="IlinkovskiArseniy_Caesar%27s_cipher.cpp" />
     <ClCompile Include="lab12.cpp" />
   </ItemGroup>
   <ItemGroup>
