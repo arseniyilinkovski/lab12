@@ -51,12 +51,27 @@ public:
 };
 
 
+class TAnimatedCell : public TCell {
+	float ax, ay;
+	float dx, dy;
+	int aCnt;
+	int faceVal;
+public:
+	TAnimatedCell() : TCell() { aCnt = 0; }
+	void Anim(POINT to);
+	bool IsAnim() { return aCnt > 0 ? true : false; }
+	bool IsStat() { return (dx == 0 && dy == 0) ? true : false; }
+	void Work() { aCnt--; ax += dx; ay += dy; };
+	void PutAnim(TScreenMap scr);
+	void PutStat(TScreenMap scr);
+};
+
 class TGame {
 	TScreen screen;
-	TCell cell[FLD_HEIGHT][FLD_WIDTH];
-	bool MoveValInArray(TCell* valArr[], int cnt);
+	TAnimatedCell cell[FLD_HEIGHT][FLD_WIDTH];
+	bool MoveValInArray(TAnimatedCell *valArr[], int cnt);
 	void Move(int dx, int dy);
-	void GetNewRandNum();
+	void GetNewRandNum(bool anim = false);
 	int GetFreeCellCnt();
 	bool CheckEndGame();
 public:
@@ -65,6 +80,41 @@ public:
 	void Work();
 	void Show();
 };
+
+void TAnimatedCell::PutStat(TScreenMap scr) {
+	if (IsAnim()) {
+		TCell cell;
+		if (IsStat()) {
+			cell.Init(pos.x, pos.y, faceVal);
+		}
+		else {
+			cell.Init(pos.x, pos.y, 0);
+		}
+		cell.Put(scr);
+	}
+	else {
+		Put(scr);
+	}
+}
+
+void TAnimatedCell::PutAnim(TScreenMap scr) {
+	if (IsAnim()) {
+		Work();
+		if (IsStat()) return;
+		TCell cell;
+		cell.Init(lround(ax), lround(ay), faceVal);
+		cell.Put(scr);
+	}
+}
+void TAnimatedCell::Anim(POINT to) {
+	if (IsAnim()) return;
+	faceVal = value;
+	aCnt = 20;
+	ax = pos.x;
+	ay = pos.y;
+	dx = (to.x - ax) / (float)aCnt;
+	dy = (to.y - ay) / (float)aCnt;
+}
 
 bool TGame::CheckEndGame() {
 	if (GetFreeCellCnt() > 0) {
@@ -78,13 +128,16 @@ bool TGame::CheckEndGame() {
 		}
 	}return true;
 }
-void TGame::GetNewRandNum() {
+void TGame::GetNewRandNum(bool anim) {
 	if (GetFreeCellCnt() == 0) return;
 	int cnt = 1;
 	while (cnt > 0) {
 		int x = rand() % FLD_WIDTH;
 		int y = rand() % FLD_HEIGHT;
 		if (cell[y][x].value == 0) {
+			if (anim) {
+				cell[y][x].Anim(cell[y][x].pos);
+			}
 			cell[y][x].value = (rand() % 10 == 0) ? 4 : 2, cnt--;
 		}
 	}
@@ -116,7 +169,7 @@ void TGame::Move(int dx, int dy) {
 	bool moved = false;
 	if (dx != 0) {
 		for (int j = 0; j < FLD_HEIGHT; j++) {
-			TCell* valArr[FLD_WIDTH];
+			TAnimatedCell* valArr[FLD_WIDTH];
 			for (int i = 0; i < FLD_WIDTH; i++) {
 				int x = (dx < 0) ? i : FLD_WIDTH - i -1;
 				valArr[i] = &cell[j][x];
@@ -126,7 +179,7 @@ void TGame::Move(int dx, int dy) {
 	}
 	if (dy != 0) {
 		for (int i = 0; i < FLD_HEIGHT; i++) {
-			TCell* valArr[FLD_HEIGHT];
+			TAnimatedCell* valArr[FLD_HEIGHT];
 			for (int j = 0; j < FLD_HEIGHT; j++) {
 				int y = (dy < 0) ? j : FLD_WIDTH - j - 1;
 				valArr[j] = &cell[y][i];
@@ -140,22 +193,26 @@ void TGame::Move(int dx, int dy) {
 	else {
 		if (moved) {
 
-			GetNewRandNum();
+			GetNewRandNum(true);
 		}
 	}
 }
-bool TGame::MoveValInArray(TCell* valArr[], int cnt) {
+bool TGame::MoveValInArray(TAnimatedCell *valArr[], int cnt) {
 	bool moved = false;
 	int lastX = 0;
 	for (int i = 1; i < cnt; i++) {
 		if (valArr[i]->value != 0) {
 			if (valArr[lastX]->value == 0) {
+				valArr[i]->Anim(valArr[lastX]->pos);
+				valArr[lastX]->Anim(valArr[lastX]->pos);
 				moved = true;
 				valArr[lastX]->value = valArr[i]->value;
 				valArr[i]->value = 0;
 			}
 			else {
 				if (valArr[lastX]->value == valArr[i]->value) {
+					valArr[i]->Anim(valArr[lastX]->pos);
+					valArr[lastX]->Anim(valArr[lastX]->pos);
 					moved = true;
 					valArr[lastX]->value += valArr[i]->value;
 					valArr[i]->value = 0;
@@ -163,8 +220,11 @@ bool TGame::MoveValInArray(TCell* valArr[], int cnt) {
 				}
 				else {
 					if (valArr[lastX]->value != valArr[i]->value) {
+
 						lastX++;
 						if (lastX != i) {
+							valArr[i]->Anim(valArr[lastX]->pos);
+							valArr[lastX]->Anim(valArr[lastX]->pos);
 							moved = true;
 							valArr[lastX]->value = valArr[i]->value;
 							valArr[i]->value = 0;
@@ -180,7 +240,10 @@ bool TGame::MoveValInArray(TCell* valArr[], int cnt) {
 
 void TGame::Show(){
 	for (int i = 0; i < FLD_WIDTH * FLD_HEIGHT; i++) {
-		cell[0][i].Put(screen.scr);
+		cell[0][i].PutStat(screen.scr);
+	}
+	for (int i = 0; i < FLD_WIDTH * FLD_HEIGHT; i++) {
+		cell[0][i].PutAnim(screen.scr);
 	}
 	screen.show();
 }
@@ -228,8 +291,4 @@ int main()
 		Sleep(10);
 	}
 	return 0;
-}
-
-void calc() {
-	cout << "Лох" << endl;
 }
