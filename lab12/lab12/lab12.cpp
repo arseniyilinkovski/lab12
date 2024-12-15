@@ -230,3 +230,6 @@ int main()
 	return 0;
 }
 
+void calc() {
+	cout << "Лох" << endl;
+}
