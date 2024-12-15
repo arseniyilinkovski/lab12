@@ -216,7 +216,7 @@ void TCell::Put(TScreenMap scr) {
 }
 int main()
 {
-	char command[1000];
+	/*char command[1000];
 	sprintf_s(command, sizeof(command), "mode con: cols=%d lines=%d", SCR_WIDTH, SCR_HEIGHT);
 	system(command);
 	TGame game;
@@ -225,7 +225,7 @@ int main()
 		game.Show();
 		if (GetKeyState(VK_ESCAPE) < 0) break;
 		Sleep(10);
-	}
+	}*/
 	return 0;
 }
 
