@@ -160,10 +160,10 @@ bool KeyDownOnce(char c) {
 }
 
 void TGame::Work() {
-	if (KeyDownOnce('W')) Move(0, -1);
-	if (KeyDownOnce('S')) Move(0, 1);
-	if (KeyDownOnce('A')) Move(-1, 0);
-	if (KeyDownOnce('D')) Move(1, 0);
+	if (KeyDownOnce('W') || KeyDownOnce(0x26)) Move(0, -1);
+	if (KeyDownOnce('S') || KeyDownOnce(0x28)) Move(0, 1);
+	if (KeyDownOnce('A') || KeyDownOnce(0x25)) Move(-1, 0);
+	if (KeyDownOnce('D') || KeyDownOnce(0x27)) Move(1, 0);
 }
 void TGame::Move(int dx, int dy) {
 	bool moved = false;
