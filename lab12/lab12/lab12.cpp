@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <cstdio>
 #include <cmath>
+#include "IlinkovskiArseniy_Caesar's_cipher.h"
 
 using namespace std;
 const int SCR_WIDTH = 80;
