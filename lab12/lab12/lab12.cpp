@@ -1,9 +1,4 @@
-﻿#include <iostream>
-#include <Windows.h>
-#include <cstdio>
-#include <cmath>
-#include "TCell.h"
-
+﻿#include "lab12.h"
 
 
 void SetCurPos(int x, int y) {
