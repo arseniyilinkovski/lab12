@@ -2,17 +2,10 @@
 #include <Windows.h>
 #include <cstdio>
 #include <cmath>
-#include "IlinkovskiArseniy_Caesar's_cipher.h"
+#include "TCell.h"
 
-using namespace std;
-const int SCR_WIDTH = 80;
-const int SCR_HEIGHT = 25;
-const int CELL_WIDTH = 8;
-const int CELL_HEIGHT = 5;
-const int FLD_WIDTH = 4;
-const int FLD_HEIGHT = 4;
 
-typedef char TScreenMap[SCR_HEIGHT][SCR_WIDTH];
+
 void SetCurPos(int x, int y) {
 	COORD coord;
 	coord.X = x;
@@ -41,30 +34,7 @@ public:
 };
 
 
-class TCell {
-public:
-	int value; 
-	POINT pos;
-	TCell() { Init(0, 0, 0); }
-	void Init(int x, int y, int val) { value = val; pos = { x, y }; }
-	void Put(TScreenMap scr);
-};
 
-
-class TAnimatedCell : public TCell {
-	float ax, ay;
-	float dx, dy;
-	int aCnt;
-	int faceVal;
-public:
-	TAnimatedCell() : TCell() { aCnt = 0; }
-	void Anim(POINT to);
-	bool IsAnim() { return aCnt > 0 ? true : false; }
-	bool IsStat() { return (dx == 0 && dy == 0) ? true : false; }
-	void Work() { aCnt--; ax += dx; ay += dy; };
-	void PutAnim(TScreenMap scr);
-	void PutStat(TScreenMap scr);
-};
 
 class TGame {
 	TScreen screen;
@@ -81,40 +51,7 @@ public:
 	void Show();
 };
 
-void TAnimatedCell::PutStat(TScreenMap scr) {
-	if (IsAnim()) {
-		TCell cell;
-		if (IsStat()) {
-			cell.Init(pos.x, pos.y, faceVal);
-		}
-		else {
-			cell.Init(pos.x, pos.y, 0);
-		}
-		cell.Put(scr);
-	}
-	else {
-		Put(scr);
-	}
-}
 
-void TAnimatedCell::PutAnim(TScreenMap scr) {
-	if (IsAnim()) {
-		Work();
-		if (IsStat()) return;
-		TCell cell;
-		cell.Init(lround(ax), lround(ay), faceVal);
-		cell.Put(scr);
-	}
-}
-void TAnimatedCell::Anim(POINT to) {
-	if (IsAnim()) return;
-	faceVal = value;
-	aCnt = 20;
-	ax = pos.x;
-	ay = pos.y;
-	dx = (to.x - ax) / (float)aCnt;
-	dy = (to.y - ay) / (float)aCnt;
-}
 
 bool TGame::CheckEndGame() {
 	if (GetFreeCellCnt() > 0) {
@@ -261,23 +198,7 @@ void TGame::Init() {
 	GetNewRandNum();
 	GetNewRandNum();
 }
-void TCell::Put(TScreenMap scr) {
-	for (int i = 0; i < CELL_WIDTH; i++) {
-		for (int j = 0; j < CELL_HEIGHT; j++) {
-			scr[pos.y + j][pos.x + i] = (i == 0 || i == CELL_WIDTH - 1 ||
-				j == 0 || j == CELL_HEIGHT - 1) ? '+' : ' ';
-		}
-	}
-	if (value == 0) return;
-	char buf[10];
-	sprintf_s(buf, "%d", value);
-	int len = strlen(buf);
-	int posX = (CELL_WIDTH - len) / 2;
-	int posY = (CELL_HEIGHT - 1) / 2;
-	for (int i = 0; i < len; i++) {
-		scr[pos.y + posY][pos.x + i + posX] = buf[i];
-	}
-}
+
 int main()
 {
 	char command[1000];

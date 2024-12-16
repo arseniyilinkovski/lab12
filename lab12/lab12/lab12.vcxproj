@@ -128,9 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="lab12.cpp" />
+    <ClCompile Include="TCell.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="IlinkovskiArseniy_Caesar%27s_cipher.h" />
+    <ClInclude Include="TCell.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
