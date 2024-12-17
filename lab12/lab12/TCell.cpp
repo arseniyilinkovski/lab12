@@ -16,7 +16,14 @@ void TAnimatedCell::PutStat(TScreenMap scr) {
 		Put(scr);
 	}
 }
+void TCell::Init(int x, int y, int val) { value = val; pos = { x, y }; }
 
+
+bool TAnimatedCell::IsAnim() { return aCnt > 0 ? true : false; }
+
+
+bool TAnimatedCell::IsStat() { return (dx == 0 && dy == 0) ? true : false; }
+void TAnimatedCell::Work() { aCnt--; ax += dx; ay += dy; };
 void TAnimatedCell::PutAnim(TScreenMap scr) {
 	if (IsAnim()) {
 		Work();

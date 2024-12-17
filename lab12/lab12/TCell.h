@@ -19,7 +19,7 @@ public:
 	int value;
 	POINT pos;
 	TCell() { Init(0, 0, 0); }
-	void Init(int x, int y, int val) { value = val; pos = { x, y }; }
+	void Init(int x, int y, int val);
 	void Put(TScreenMap scr);
 };
 
@@ -31,9 +31,9 @@ class TAnimatedCell : public TCell {
 public:
 	TAnimatedCell() : TCell() { aCnt = 0; }
 	void Anim(POINT to);
-	bool IsAnim() { return aCnt > 0 ? true : false; }
-	bool IsStat() { return (dx == 0 && dy == 0) ? true : false; }
-	void Work() { aCnt--; ax += dx; ay += dy; };
+	bool IsAnim();
+	bool IsStat();
+	void Work();
 	void PutAnim(TScreenMap scr);
 	void PutStat(TScreenMap scr);
 };

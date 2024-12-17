@@ -131,7 +131,6 @@
     <ClCompile Include="TCell.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IlinkovskiArseniy_Caesar%27s_cipher.h" />
     <ClInclude Include="lab12.h" />
     <ClInclude Include="TCell.h" />
   </ItemGroup>
