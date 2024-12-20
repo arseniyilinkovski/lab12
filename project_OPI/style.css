@@ -1,0 +1,256 @@
+*{
+    font-size: 20px;
+    color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "gilroy"
+}
+
+@font-face {
+    font-family: "gilroy";
+    src: url("fonts/Gilroy-Light.otf");
+}
+
+@font-face {
+    font-family: "logo";
+    src: url("fonts/ofont.ru_Rosarium.ttf");
+}
+
+nav span {
+    margin: 10px;
+    padding-left: 30px;
+    font-family: "logo";
+    font-size: 40px;
+}   
+body{
+    height: fit-content;
+    width: 100%;
+    background: linear-gradient(90deg, #250055,#5200a3,#6600ff,#3e00b3,#070055);    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: calc(100vh - 105px);
+    width: 100%;
+}
+.logo{
+    color: white;
+}
+
+
+.info{
+    display: flex;
+    padding: 0 15px;
+    margin: 15px;
+    height: 75px;
+    align-items: center;
+    gap: 50px
+}
+
+.page2 .to_header a{
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: rgb(75, 4, 44) 1px 0 10px;
+    transition: 1s;
+    letter-spacing: 2px;
+    font-weight: 900;
+    font-size: 32px;
+}
+
+.page2 .to_header{
+    
+    display: flex;
+    justify-content: center;
+}
+.page2 .to_header a::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    width: 0;
+    border-bottom: 2px solid rgb(193, 242, 156);
+    left: 0;
+    transition: width 1s;
+}
+.page2 .to_header a:hover{
+    text-shadow: 0 0 3px rgb(193, 242, 156) ;
+    color: rgb(193, 242, 156);
+}
+
+.page2 .to_header a:hover::after{
+    width: 100%;
+}
+
+.page1 .to_header a{
+    padding: 15px;
+}
+
+
+
+.page1 .to_header a:hover::after{
+    width: 100%;
+}
+.info{
+    display: flex;
+    padding: 0 15px;
+    margin: 15px;
+    height: 75px;
+    align-items: center;
+    gap: 50px
+}
+
+.info a{
+    position: relative;
+    text-shadow: rgb(75, 4, 44) 1px 0 10px;
+    transition: 1s;
+    
+}
+
+
+.info a::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    width: 0;
+    border-bottom: 2px solid rgb(193, 242, 156);
+    left: 0;
+    transition: width 1s;
+}
+.info a:hover{
+    text-shadow: 0 0 3px rgb(193, 242, 156) ;
+    color: rgb(193, 242, 156);
+}
+
+.info a:hover::after{
+    width: 100%;
+}
+nav a{
+    display: inline;
+    text-decoration: none;
+    color: white;
+}
+nav{
+    width: 100vw;
+    height: 15vh;
+}
+.wrapper h1{
+    margin: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    text-shadow: 0 0 30px rgb(247, 0, 255);
+}
+
+nav img{
+    background-color: transparent;
+    height: 75px;
+    width: 75px;
+}
+.wrapper{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    top: calc(50vh - 70.7px);
+    z-index: -3;
+}
+.page1{
+    padding: 0 200px;
+}
+.page1 h2{
+    margin: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 50px;
+    text-shadow: 0 0 5px rgb(255, 255, 255);
+}
+
+.page1 p{
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.226);
+    border-radius: 20px;
+    text-align: justify;
+    letter-spacing: 0.3px;
+    line-height: 35px;
+}
+
+.page2{
+    padding: 150px 200px;
+}
+.page2 h2{
+    margin: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 50px;
+    text-shadow: 0 0 5px rgb(255, 255, 255);
+}
+
+.page2 div{
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.226);
+    border-radius: 20px;
+    text-align: justify;
+    letter-spacing: 0.3px;
+    line-height: 35px;
+    margin: 15px;
+}
+
+.page1 div{
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.226);
+    border-radius: 20px;
+    text-align: justify;
+    letter-spacing: 0.3px;
+    line-height: 35px;
+    margin: 15px;
+}
+
+.page1 a{
+    display: flex;align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
+    text-shadow: rgb(75, 4, 44) 1px 0 10px;
+    transition: 1s;
+    letter-spacing: 2px;
+    font-weight: 900;
+    font-size: 32px;
+}
+
+.page1 a:hover{
+    text-shadow: 0 0 3px rgb(193, 242, 156) ;
+    color: rgb(193, 242, 156);
+}
+
+.page1 a::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    width: 0;
+    border-bottom: 2px solid rgb(193, 242, 156);
+    left: 0;
+    transition: width 1s;
+    
+}
+
+.page1 a:hover::after{
+    width: 100%;
+}
+
+.page1 .to_header1 {
+    display: flex;
+    justify-content: center;
+}
+
+.page2 ol a{
+    text-decoration: none;
+    font-style: oblique;
+    color: rgb(193, 242, 156);
+}
