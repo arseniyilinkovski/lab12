@@ -96,6 +96,7 @@ void TGame::Work() {
 	if (KeyDownOnce('S') || KeyDownOnce(0x28)) Move(0, 1);
 	if (KeyDownOnce('A') || KeyDownOnce(0x25)) Move(-1, 0);
 	if (KeyDownOnce('D') || KeyDownOnce(0x27)) Move(1, 0);
+
 }
 void TGame::Move(int dx, int dy) {
 	bool moved = false;
