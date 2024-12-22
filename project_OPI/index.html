@@ -12,7 +12,7 @@
         </span>
         <div class="info">
         <a href="https://github.com/arseniyilinkovski/lab12" class="about" id="header" target="_blank">GitHub</a>
-        <a href="" class="team">Команда</a>
+        <a href="#team" class="team">Команда</a>
         <a href="#how" class="creation">Создание</a>
         <a href="#instructions" class="instructions">Инструкции</a>
     </div>
@@ -21,6 +21,82 @@
         <h1 >Проект по ОПИ</h1>
         <h1>Игра 2048</h1>
     </div>
+
+    <!-- Карточки -->
+
+    <div class="page">
+
+        <h2 class="our_team" id="team">Команда</h2> 
+    
+        <div class="block_for_team">
+
+
+            <div class="for_arrows">
+
+                <button class="arrow" id="to_the_left">🡠</button>
+                <button class="arrow" id="to_the_right">🡢</button>
+
+            </div>
+
+            <div class="cards">
+
+                <div class="person" id="Arseny">
+                <div class="blockphoto">
+                    <img src="images/profile.JPG" class="photo">
+                </div>
+                    <p class="fio">Ильинковский Арсений Станиславович</p>
+                    <p class="VK">VK: id600250871</p>
+                    <p class="Tg">Telegram: @ars_1_k</p>
+                    <p class="assessment">Оценка: </p>
+                
+                </div>
+        
+                <div class="person" id="Ilya">
+        
+                    <img src="" class="photo">
+                    <p class="fio">Авдеенко Илья Владимирович</p>
+                    <p class="VK">VK: ilyaavdeenko</p>
+                    <p class="Tg">Telegram: @illiyaavdeenko</p>
+                    <p class="assessment">Оценка: </p>
+                </div>
+        
+                <div class="person" id="Artem">
+        
+                    <img src="" class="photo">
+                    <p class="fio">Груша Артем Владимирович</p>
+                    <p class="VK">VK: </p>
+                    <p class="Tg">Telegram: @Artsemij</p>
+                    <p class="assessment">Оценка: </p>
+                </div>
+        
+                <div class="person" id="Alexander">
+        
+                    <img src="" class="photo">
+                    <p class="fio">Шлёг Александр Дмитриевич</p>
+                    <p class="VK">VK: id593479318</p>
+                    <p class="Tg">Telegram: @SashaShleg</p>
+                    <p class="assessment">Оценка: </p>
+                </div>
+        
+                <div class="person" id="Evgeniy">
+        
+                    <img src="" class="photo">
+                    <p class="fio">Павловский Евгений Дмитриевич</p>
+                    <p class="VK">VK: saredzu</p>
+                    <p class="Tg">Telegram: @saredzu</p>
+                    <p class="assessment">Оценка: </p>
+                </div>
+        
+            </div>
+
+            <div class="to_header"> <a href="#header">На главную</a> </div>
+
+            </div>
+
+    </div>
+
+    <!-- Карточки -->
+
     <div class="page2">
         <h2 class="how" id="how">Создание</h2>
         <div class="block_how">
@@ -108,5 +184,116 @@
         </div>
     </div>
     </div>
+
+    <script>
+
+        let curr_view = 1;
+        let pos = 1;
+        const persons = [];
+
+        persons.push(document.getElementById("Arseny"));
+        persons.push(document.getElementById("Ilya"));
+        persons.push(document.getElementById("Artem"));
+        persons.push(document.getElementById("Alexander"));
+        persons.push(document.getElementById("Evgeniy"));
+
+        function init(){
+            for(let i = 3;i < 5;i++){
+                persons[i].classList.add("hidden_person");
+            }
+            persons[1].classList.add("main_person");
+        }
+
+        function updateView(direction){
+            if(curr_view == 4 && direction == 1){
+                persons[curr_view].classList.remove("main_person");
+                pos = 0;
+                curr_view = 0;
+
+                for(let i = 0;i < 5;i++){
+                    if(i < 3){
+                        persons[i].classList.remove("hidden_person");
+                    } else{
+                        persons[i].classList.add("hidden_person");
+                    }
+
+                }
+                persons[curr_view].classList.add("main_person");
+                return;
+            }
+
+            if(curr_view == 0 && direction == -1){
+                persons[curr_view].classList.remove("main_person");
+                pos = 2;
+                curr_view = 4;
+
+                for(let i = 0;i < 5;i++){
+                    if(i > 1){
+                        persons[i].classList.remove("hidden_person");
+                    } else{
+                        persons[i].classList.add("hidden_person");
+                    }
+
+                }
+                persons[curr_view].classList.add("main_person");
+                return;
+            }
+
+
+
+            if(pos + direction >= 0 && pos + direction <= 2){
+
+                persons[curr_view].classList.remove("main_person");
+
+                curr_view += direction;
+
+                pos += direction;
+                    
+                persons[curr_view].classList.add("main_person");
+
+                return;
+
+            }
+
+
+
+            if(pos == 2 && direction == 1){
+
+                persons[curr_view - 2].classList.add("hidden_person");
+
+                persons[curr_view + 1].classList.remove("hidden_person");
+
+                persons[curr_view].classList.remove("main_person");
+
+                persons[curr_view + 1].classList.add("main_person");
+
+                curr_view += direction;
+
+                return;
+            }
+
+
+
+            if(pos == 0 && direction == -1){
+
+                persons[curr_view + 2].classList.add("hidden_person");
+
+                persons[curr_view - 1].classList.remove("hidden_person");
+
+                persons[curr_view].classList.remove("main_person");
+
+                persons[curr_view - 1].classList.add("main_person");
+
+                curr_view += direction;
+
+            return;
+            }
+
+        }
+        init();
+        document.getElementById("to_the_right").addEventListener('click', () => updateView(1));
+        document.getElementById("to_the_left").addEventListener('click', () => updateView(-1));
+    </script>
+
 </body>
 </html>
