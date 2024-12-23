@@ -136,7 +136,8 @@ body{
     background: #6600ff;
     overflow: hidden;
     border-radius: 20px;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
     margin-bottom: 20px;
     width: 33%;
@@ -145,6 +146,33 @@ body{
     border: 2px black solid;
     transition: height 1s;
 }
+
+.person a{
+    text-decoration: none;
+    padding: 10px;
+}
+.person a::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    width: 0;
+    border-bottom: 2px solid rgb(193, 242, 156);
+    left: 0;
+    transition: width 1s;
+}
+
+
+.person a:hover{
+    text-shadow: 0 0 3px rgb(193, 242, 156) ;
+    color: rgb(193, 242, 156);
+}
+
+.person a:hover::after{
+    width: 100%;
+}
+
+
+
 .hidden_person{
 
     display: none;
@@ -162,13 +190,13 @@ body{
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 60%;
+    height: 55%;
 }
 .photo{
     width: 250px;
     border-radius: 20px;
 
-
+    object-fit: cover;
 }
 
 .fio{
