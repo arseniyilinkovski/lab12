@@ -91,11 +91,11 @@
 ## **7. Запуск проекта**
 1. Клонируйте репозиторий:  
    ```bash
-   git clone https://github.com/username/2048.git
+   git clone https://github.com/arseniyilinkovski/lab12/tree/main
    ```
 2. Перейдите в папку проекта:  
    ```bash
-   cd 2048
+   cd main
    ```
 3. Скомпилируйте проект:  
    ```bash
