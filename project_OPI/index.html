@@ -15,6 +15,7 @@
         <a href="#team" class="team">Команда</a>
         <a href="#how" class="creation">Создание</a>
         <a href="#instructions" class="instructions">Инструкции</a>
+        <a href="#faq   " class="faq">FAQ</a>
     </div>
     </nav>
     <div class="wrapper">
@@ -203,9 +204,68 @@
         </div>
     </div>
     </div>
+    <div class="page3">
+        <h2 id="faq">FAQ</h2>
 
+            
+
+                <div>
+            <ol>
+                <li>
+                    <h3>Назначение и цели: </h3>
+                    <div class="target_list">
+                        <ol type="1">
+                            <h4>Цели: </h4>
+                            <li>Реализовать базовую игровую механику.</li>
+                            <li>Обеспечить корректное отображение игрового поля в консоли.</li>
+                            <li>Добавить визуальные элементы для улучшения пользовательского опыта.</li>
+                            <li>Создать модульный и поддерживаемый код для дальнейших улучшений.</li>
+                        </ol>
+                    </div>
+                    <div class="target_list">
+                        <h4 class="targets">Назначение:</h4>
+                        <ol>
+                            <li>Реализовать базовую игровую механику.</li>
+                            <li>Обеспечить корректное отображение игрового поля в консоли.</li>
+                            <li>Добавить визуальные элементы для улучшения пользовательского опыта.</li>
+                            <li>Создать модульный и поддерживаемый код для дальнейших улучшений.</li>
+                        </ol>
+                    </div>
+                </li>
+                <li>
+                    <h3>Требования: </h3>
+                    <div class="target_list">
+                        <ol type="1">
+                            <h4>Перемещение плиток по игровому полю с помощью клавиш управления (стрелки).</h4>
+                            <li>Объединение плиток с одинаковыми значениями.
+                            </li>
+                            <li>Добавление новой плитки (2 или 4) после каждого хода.</li>
+                            <li>Добавить визуальные элементы для улучшения пользовательского опыта.</li>
+                            <li>Вывод сообщения о победе (плитка 2048) или поражении (нет доступных ходов).</li>
+                        </ol>
+                    </div>
+                    <div class="target_list">
+                        <h4 class="targets">Нефункциональные требования</h4>
+                        <ol>
+                            <li>Время отклика на действия пользователя < 100 мс.</li>
+                            <li>Корректная работа в консольной среде (Windows, Linux).</li>
+                            <li>Простая сборка и запуск с использованием стандартного компилятора C++.</li>
+                            <li>Минимальное потребление ресурсов для поддержки работы на старых системах.</li>
+                        </ol>
+                    </div>
+                </li>
+            </ol>
+            <div class="to_header1">
+                <a href="#header">На главную</a>
+                    </div>
+        </div>
+       
+
+           
+        </div>
+    </div>
     <script>
-
+       
         let curr_view = 1;
         let pos = 1;
         const persons = [];
@@ -312,7 +372,19 @@
         init();
         document.getElementById("to_the_right").addEventListener('click', () => updateView(1));
         document.getElementById("to_the_left").addEventListener('click', () => updateView(-1));
+        document.addEventListener('DOMContentLoaded', function() { 
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { 
+        anchor.addEventListener('click', function(e) { 
+          e.preventDefault(); 
+     
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ 
+            behavior: 'smooth' 
+          }); 
+        }); 
+    }); 
+});
     </script>
+
 
 </body>
 </html>

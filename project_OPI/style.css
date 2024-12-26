@@ -277,15 +277,27 @@ body{
     width: 100%;
 }
 
-.page1 .to_header a{
-    padding: 15px;
+.page2 div{
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.226);
+    border-radius: 20px;
+    text-align: justify;
+    letter-spacing: 0.3px;
+    line-height: 35px;
+    margin: 15px;
 }
 
-
-
-.page1 .to_header a:hover::after{
-    width: 100%;
+.page2{
+    padding: 150px 200px;
 }
+.page2 h2{
+    margin: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 50px;
+    text-shadow: 0 0 5px rgb(255, 255, 255);
+}
+
 .info{
     display: flex;
     padding: 0 15px;
@@ -352,6 +364,18 @@ nav img{
     top: calc(50vh - 70.7px);
     z-index: -3;
 }
+
+.page1 .to_header a{
+    padding: 15px;
+}
+
+
+
+.page1 .to_header a:hover::after{
+    width: 100%;
+}
+
+
 .page1{
     padding: 0 200px;
 }
@@ -372,26 +396,7 @@ nav img{
     line-height: 35px;
 }
 
-.page2{
-    padding: 150px 200px;
-}
-.page2 h2{
-    margin: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 50px;
-    text-shadow: 0 0 5px rgb(255, 255, 255);
-}
 
-.page2 div{
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.226);
-    border-radius: 20px;
-    text-align: justify;
-    letter-spacing: 0.3px;
-    line-height: 35px;
-    margin: 15px;
-}
 
 .page1 div{
     padding: 30px;
@@ -444,4 +449,91 @@ nav img{
     text-decoration: none;
     font-style: oblique;
     color: rgb(193, 242, 156);
+}
+
+
+.page3 h3{
+    font-size: 30px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.304);
+}
+.page3 p{
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.226);
+    border-radius: 20px;
+    text-align: justify;
+    letter-spacing: 0.3px;
+    line-height: 35px;
+    margin: 10px;
+}
+
+.page3 .wrapper_of_targets{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.page3 .icons{
+    padding: 20px   ;
+}
+.page3 .to_header a{
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: rgb(75, 4, 44) 1px 0 10px;
+    transition: 1s;
+    letter-spacing: 2px;
+    font-weight: 900;
+    font-size: 32px;
+}
+
+.page3 .to_header{
+    
+    display: flex;
+    justify-content: center;
+}
+.page3 .to_header a::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    width: 0;
+    border-bottom: 2px solid rgb(193, 242, 156);
+    left: 0;
+    transition: width 1s;
+}
+.page3 .to_header a:hover{
+    text-shadow: 0 0 3px rgb(193, 242, 156) ;
+    color: rgb(193, 242, 156);
+}
+
+.page3 .to_header a:hover::after{
+    width: 100%;
+}
+.page3 .target_list ol{
+    list-style: disc;
+}
+.page3 div{
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.226);
+    border-radius: 20px;
+    text-align: justify;
+    letter-spacing: 0.3px;
+    line-height: 35px;
+    margin: 15px;
+}
+.page3 ol{
+    list-style: circle;
+}
+
+.page3{
+    padding: 150px 200px;
+}
+.page3 h2{
+    margin: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 50px;
+    text-shadow: 0 0 5px rgb(255, 255, 255);
+}
+.page3 li{
+    margin-left: 40px;
 }
