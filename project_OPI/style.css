@@ -413,7 +413,7 @@ nav img{
     justify-content: center;
     text-decoration: none;
     position: relative;
-    text-shadow: rgb(75, 4, 44) 1px 0 10px;
+
     transition: 1s;
     letter-spacing: 2px;
     font-weight: 900;
@@ -475,8 +475,28 @@ nav img{
 .page3 .icons{
     padding: 20px   ;
 }
-.page3 .to_header a{
+.to_header{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    border-radius: 20px;
+
+    width: 98%;
+
+    height: 70px;
+
+    background: rgba(0, 0, 0, 0.226);
+
+}
+
+.page3 .to_header  a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
+    text-decoration: none;
     text-align: center;
     text-decoration: none;
     text-shadow: rgb(75, 4, 44) 1px 0 10px;
@@ -484,29 +504,7 @@ nav img{
     letter-spacing: 2px;
     font-weight: 900;
     font-size: 32px;
-}
 
-.page3 .to_header{
-    
-    display: flex;
-    justify-content: center;
-}
-.page3 .to_header a::after{
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    width: 0;
-    border-bottom: 2px solid rgb(193, 242, 156);
-    left: 0;
-    transition: width 1s;
-}
-.page3 .to_header a:hover{
-    text-shadow: 0 0 3px rgb(193, 242, 156) ;
-    color: rgb(193, 242, 156);
-}
-
-.page3 .to_header a:hover::after{
-    width: 100%;
 }
 .page3 .target_list ol{
     list-style: disc;
@@ -520,6 +518,7 @@ nav img{
     line-height: 35px;
     margin: 15px;
 }
+
 .page3 ol{
     list-style: circle;
 }
@@ -536,4 +535,65 @@ nav img{
 }
 .page3 li{
     margin-left: 40px;
+}
+
+.page3 li p{
+    padding: 20px;
+}
+
+.epoch_list a{
+    text-decoration: none;
+    text-shadow: 0 0 5px rgb(255, 255, 255);
+    transition: .5s;
+}
+
+.epoch_list a:hover{
+    color: rgb(193, 242, 156);
+}
+
+table,
+td {
+  border: 3px solid     #ffffff;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 10px;
+}
+  
+
+.page3 .to_header a {
+	color: #ffffff; 
+    position: relative;
+    cursor: pointer;
+    text-decoration: none; 
+}
+
+.page3 .to_header a:hover{
+    text-shadow: 0 0 3px rgb(193, 242, 156);
+    color: rgb(193, 242, 156);
+}
+.page3 .to_header a:after {
+	content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px; 
+    background-color: rgb(193, 242, 156); 
+    transition: width 0.5s;
+}
+
+.page3 .to_header a:hover:after {
+	content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+
+    height: 2px;
+    background-color: rgb(193, 242, 156);
+    transition: width .5s;  
 }
